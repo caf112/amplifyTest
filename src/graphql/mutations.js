@@ -1,45 +1,150 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
-export const createTodo = /* GraphQL */ `
-  mutation CreateTodo(
-    $input: CreateTodoInput!
-    $condition: ModelTodoConditionInput
+export const createUser = /* GraphQL */ `
+  mutation CreateUser(
+    $input: CreateUserInput!
+    $condition: ModelUserConditionInput
   ) {
-    createTodo(input: $input, condition: $condition) {
+    createUser(input: $input, condition: $condition) {
+      userid
+      username
+      githubAccount
+      clearedStages {
+        items {
+          stageid
+          stageNumber
+          stageName
+          score
+          clearedAt
+          userID
+          id
+          createdAt
+          updatedAt
+          userClearedStagesId
+        }
+        nextToken
+      }
       id
-      name
-      description
       createdAt
       updatedAt
     }
   }
 `;
-export const updateTodo = /* GraphQL */ `
-  mutation UpdateTodo(
-    $input: UpdateTodoInput!
-    $condition: ModelTodoConditionInput
+export const updateUser = /* GraphQL */ `
+  mutation UpdateUser(
+    $input: UpdateUserInput!
+    $condition: ModelUserConditionInput
   ) {
-    updateTodo(input: $input, condition: $condition) {
+    updateUser(input: $input, condition: $condition) {
+      userid
+      username
+      githubAccount
+      clearedStages {
+        items {
+          stageid
+          stageNumber
+          stageName
+          score
+          clearedAt
+          userID
+          id
+          createdAt
+          updatedAt
+          userClearedStagesId
+        }
+        nextToken
+      }
       id
-      name
-      description
       createdAt
       updatedAt
     }
   }
 `;
-export const deleteTodo = /* GraphQL */ `
-  mutation DeleteTodo(
-    $input: DeleteTodoInput!
-    $condition: ModelTodoConditionInput
+export const deleteUser = /* GraphQL */ `
+  mutation DeleteUser(
+    $input: DeleteUserInput!
+    $condition: ModelUserConditionInput
   ) {
-    deleteTodo(input: $input, condition: $condition) {
+    deleteUser(input: $input, condition: $condition) {
+      userid
+      username
+      githubAccount
+      clearedStages {
+        items {
+          stageid
+          stageNumber
+          stageName
+          score
+          clearedAt
+          userID
+          id
+          createdAt
+          updatedAt
+          userClearedStagesId
+        }
+        nextToken
+      }
       id
-      name
-      description
       createdAt
       updatedAt
+    }
+  }
+`;
+export const createStage = /* GraphQL */ `
+  mutation CreateStage(
+    $input: CreateStageInput!
+    $condition: ModelStageConditionInput
+  ) {
+    createStage(input: $input, condition: $condition) {
+      stageid
+      stageNumber
+      stageName
+      score
+      clearedAt
+      userID
+      id
+      createdAt
+      updatedAt
+      userClearedStagesId
+    }
+  }
+`;
+export const updateStage = /* GraphQL */ `
+  mutation UpdateStage(
+    $input: UpdateStageInput!
+    $condition: ModelStageConditionInput
+  ) {
+    updateStage(input: $input, condition: $condition) {
+      stageid
+      stageNumber
+      stageName
+      score
+      clearedAt
+      userID
+      id
+      createdAt
+      updatedAt
+      userClearedStagesId
+    }
+  }
+`;
+export const deleteStage = /* GraphQL */ `
+  mutation DeleteStage(
+    $input: DeleteStageInput!
+    $condition: ModelStageConditionInput
+  ) {
+    deleteStage(input: $input, condition: $condition) {
+      stageid
+      stageNumber
+      stageName
+      score
+      clearedAt
+      userID
+      id
+      createdAt
+      updatedAt
+      userClearedStagesId
     }
   }
 `;
