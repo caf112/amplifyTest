@@ -14,6 +14,7 @@ const App = () => {
   const [users,setUsers] = useState([])
 
   useEffect(() => {
+    fetchUsers()
     // const checkAuth = async () => {
     //   try {
     //     const session = await Auth.currentSession();
@@ -23,7 +24,6 @@ const App = () => {
     //   }
     // };
     // checkAuth();
-    fetchUsers()
   },[])//無限ループが発生してしまうため、2番目のパラメータとして空の配列を入れる
 
   const fetchUsers = async () => {
