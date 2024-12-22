@@ -2,6 +2,13 @@ import React, { useState } from "react"; // 状態管理のためのReactフッ�
 import { API, graphqlOperation } from "aws-amplify"; // AWS AmplifyのAPIおよびGraphQL操作メソッドをインポート
 import { createTodo } from "./graphql/mutations"; // mutations.jsファイルからcreateTodoミューテーションの関数をインポート
 
+import { Amplify } from "aws-amplify";
+import {  Authenticator} from "@aws-amplify/ui-react"
+import awsconfig from "./aws-exports";
+import "@aws-amplify/ui-react/styles.css"
+
+Amplify.configure(awsconfig);
+
 // AddTodoコンポーネントの定義
 const AddTodo = () => {
   // 入力欄の内容を保持するためのステートを定義
@@ -24,34 +31,49 @@ const AddTodo = () => {
   };
 
   return (
-    <>
-      {/* 名前の入力フィールド */}
-      <input
-        type="text"
-        placeholder="名前"
-        value={name}
-        onChange={(e) => setName(e.target.value)}
-      />
-      {/* 説明の入力フィールド */}
-      <input
-        type="text"
-        placeholder="説明"
-        value={description}
-        onChange={(e) => setDescription(e.target.value)}
-      />
-      {/* Todoを追加するボタン */}
-      <button onClick={handleSubmit}>登録</button>
-      {/* 登録完了メッセージ message ステートに値が設定されている場合にのみ、メッセージを表示します。 */}
-      {message && <p>{message}</p>}
-    </>
-  );
+    
+      
+        <>
+           
+             {/* 名前の入力フィールド */}
+             <input
+              type="text"
+              placeholder="名前"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+            />
+            {/* 説明の入力フィールド */}
+            <input
+              type="text"
+              placeholder="説明"
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
+            />
+            {/* Todoを追加するボタン */}
+            <button onClick={handleSubmit}>登録</button>
+            {/* 登録完了メッセージ message ステートに値が設定されている場合にのみ、メッセージを表示します。 */}
+            {message && <p>{message}</p>}
+          </>
+      
+    
+  )
+  
 };
 
 // Appコンポーネントの定義
 const App = () => {
   return (
     <>
-      <AddTodo />
+    <Authenticator >
+      {({signOut,user}) => (
+        <div>
+          {console.log(user)}
+          <h1>Welcome,{user?.username}</h1>
+          <button onClick={signOut}>signout</button>
+          <AddTodo /> 
+        </div>
+      )}
+    </Authenticator>
     </>
   );
 };

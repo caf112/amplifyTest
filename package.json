@@ -3,9 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@aws-amplify/ui-react": "^4.6.0",
+    "@aws-amplify/ui-react": "^4.6.5",
     "amplify": "file:",
-    "aws-amplify": "^5.0.8",
+    "aws-amplify": "^5.3.27",
     "cra-template": "1.2.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
