@@ -4,6 +4,10 @@
   "private": true,
   "dependencies": {
     "@aws-amplify/ui-react": "^4.6.5",
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.0",
+    "@mui/icons-material": "^6.2.1",
+    "@mui/material": "^6.2.1",
     "amplify": "file:",
     "aws-amplify": "^5.3.27",
     "cra-template": "1.2.0",

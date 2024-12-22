@@ -5,6 +5,8 @@ import { Authenticator } from "@aws-amplify/ui-react"
 import awsconfig from "./aws-exports";
 import "@aws-amplify/ui-react/styles.css"
 import { listUsers } from "./graphql/queries";
+import { Paper,IconButton } from "@mui/material";
+import DeleteIcon from"@mui/icons-material/Delete"
 
 Amplify.configure(awsconfig);
 
@@ -53,7 +55,27 @@ const App = () => {
         <div>
           {/* {console.log(user)} */}
           <h1>Welcome,{user?.username}</h1>
-          <button onClick={signOut}>signout</button>
+          <div>
+          < button onClick={signOut}>signout</button>
+          </div>
+          <div className="userlist">
+            {users.map(user => {
+              return (
+                <Paper variant="outlined">
+                  <div className="userCard">
+                    <IconButton aria-label="delete">
+                      <DeleteIcon />
+                    </IconButton>
+                    <div>
+                      <div>{user.id}</div>
+                      <div>{user.username}</div>
+                      <div>{user.githubAccount}</div>
+                    </div>
+                  </div>
+                </Paper>
+              )
+            })}
+          </div>
         </div>
       )}
     </Authenticator>
