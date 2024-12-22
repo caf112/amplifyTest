@@ -17,34 +17,17 @@ const App = () => {
 
   useEffect(() => {
     fetchUsers()
-    // const checkAuth = async () => {
-    //   try {
-    //     const session = await Auth.currentSession();
-    //     console.log(`Current session token:`, session.getIdToken().getJwtToken());
-    //   }catch (error) {
-    //     console.error(`Authentication error:` ,error);
-    //   }
-    // };
-    // checkAuth();
   },[])//無限ループが発生してしまうため、2番目のパラメータとして空の配列を入れる
 
   const fetchUsers = async () => {
     try {
       const userData = await API.graphql(graphqlOperation(listUsers));
-      console.log(`API Response:`,userData);
       const userList = userData.data.listUsers.items;
       console.log(`user list`,userList);
-
       setUsers(userList)
 
     } catch(error) {
       console.error(`error on fetching users`,error);
-      
-      if (error.errors) {
-        error.errors.forEach((err) => {
-          console.error("GraphQL error:",err.message,err.path,err.extensions);
-        })
-      }
     }
   }
 
@@ -59,18 +42,22 @@ const App = () => {
           < button onClick={signOut}>signout</button>
           </div>
           <div className="userlist">
-            {users.map(user => {
+            {users.map(dyuser => {
               return (
                 <Paper variant="outlined">
                   <div className="userCard">
                     <IconButton aria-label="delete">
                       <DeleteIcon />
                     </IconButton>
-                    <div>
-                      <div>{user.id}</div>
-                      <div>{user.username}</div>
-                      <div>{user.githubAccount}</div>
-                    </div>
+                    {user.username == dyuser.username ?(
+                      <div>
+                        <div>{dyuser.id}</div>
+                        <div>{dyuser.username}</div>
+                        <div>{dyuser.githubAccount}</div>
+                      </div>
+                    ) : (
+                      <p>やっほー</p>
+                    )}
                   </div>
                 </Paper>
               )
