@@ -8,6 +8,8 @@ import { listUsers } from "./graphql/queries";
 import { Paper, IconButton } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 import UserDetails from "./UserDetails";
+import NewUser from "./NewUser";
+import { AddCircle, PersonAdd } from "@mui/icons-material";
 
 Amplify.configure(awsconfig);
 
@@ -33,6 +35,10 @@ const App = () => {
     // `UserDetails` にページ遷移し、ユーザー ID をクエリパラメータに渡す
     navigate(`/details/${userId}`);
   };
+  const handleAddClick = () => {
+    // `UserDetails` にページ遷移し、ユーザー ID をクエリパラメータに渡す
+    navigate(`/NewUser`);
+  };
 
   return (
     <div className="App">
@@ -43,6 +49,13 @@ const App = () => {
             <div>
               <button onClick={signOut}>Sign Out</button>
             </div>
+            <IconButton >
+              <PersonAdd 
+                aria-label="add"
+                onClick={() => handleAddClick()}
+                />
+              <AddCircle />
+            </IconButton>
             <div className="userlist">
               {users.map((dyuser) => (
                 <Paper key={dyuser.id} variant="outlined">
@@ -79,6 +92,7 @@ const AppRoutes = () => {
       <Routes>
         <Route path="/" element={<App />} />
         <Route path="/details/:id" element={<UserDetails />} />
+        <Route path="/NewUser" element={<NewUser />} />
       </Routes>
     </Router>
   );

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom"; // URL パラメータ取得
+import { Link, useParams } from "react-router-dom"; // URL パラメータ取得
 import { API, graphqlOperation } from "aws-amplify";
 import { getUser } from "./graphql/queries";
 
@@ -33,6 +33,7 @@ const UserDetails = () => {
   return (
     <div>
       <h2>User Details</h2>
+      <Link to="/">HomeIcon</Link>
       <p>ID: {userDetails.userid}</p>
       <p>Username: {userDetails.username}</p>
       <p>GitHub Account: {userDetails.githubAccount}</p>
